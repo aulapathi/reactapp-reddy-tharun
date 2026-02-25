@@ -1,0 +1,189 @@
+.seat-booking-container {
+  height: 87vh;
+  background-size: cover;
+  background-position: center;
+  
+  display: flex;
+   padding: 20px ;
+   justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.2); /* light transparent white */
+  background-blend-mode: overlay; /* blends image with color */
+}
+
+.booking-box {
+  background-color: white;
+  width:40%;
+  padding:30px ;
+  border-radius: 16px 16px 16px 16px; /* rounded on right side only */
+  box-shadow: 8px 0 24px rgba(0, 0, 0, 0.2);
+  color: #333;
+  font-weight: 500;
+  text-align: left;
+  display: flex;
+  overflow: hidden;
+  max-height: 55vh;
+  flex-direction: column;
+  background-color: rgba(239, 234, 234, 0.9); /* light transparent white */
+  background-blend-mode: overlay; /* blends image with color */
+}
+.booking-box h2 {
+  margin-top: -10px;
+  margin-bottom: 3px; /* reduce space below heading */
+  font-size: 22px;
+}
+
+.booking-box p {
+  margin: 3px 10px; /* reduce top and bottom spacing */
+  font-size: 16px;
+}
+.radio-Catageroy{
+  display: flex;
+  gap:50px; 
+  margin-top: 10px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.radio-Catageroy label {
+  font-size: 18px;
+  cursor: pointer;
+}
+.radio-group {
+  display: flex;
+  gap:50px; 
+  margin-top: -20px;
+  margin-left: 30px;
+  margin-bottom: -19px;
+}
+
+.radio-group label {
+  font-size: 18px;
+   padding: 8px 1px;
+  margin: 20px 0;
+  margin-bottom: 25px;
+  cursor: pointer;
+}
+.extra-section {
+  margin-top: 12px;
+  padding: 10px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+   max-height: 180px;
+   overflow-y: auto; 
+  flex-direction: column;
+  gap: 8px;
+  transition: max-height 0.8s ease, opacity 0.s ease;
+}
+
+/* scrollable variant */
+.extra-section.scroll {
+  max-height: 500px;   /* limit height */
+  overflow-y: auto;    /* enable scroll */
+  padding-right: 6px;
+}
+
+/* slim scrollbar */
+.extra-section.scroll::-webkit-scrollbar { width: 6px; }
+.extra-section.scroll::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+.extra-section.scroll::-webkit-scrollbar-track { background: transparent; }
+
+
+/* location wrapper */
+.location-panel {
+  margin-bottom: -20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 160px;     /* limit visible height */
+  padding-right: 6px;    /* room for scrollbar */
+  
+}
+
+/* rows inside location */
+.location-row {
+  display: flex;
+  gap: 12px;
+  flex-Wrap: wrap; 
+}
+.location-row .MuiTextField-root,
+.location-row .MuiFormControl-root {
+  flex: 1;
+  min-width: 0;
+}
+
+/* slim scrollbar styling */
+.location-panel::-webkit-scrollbar { width: 6px; }
+.location-panel::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.3);
+  border-radius: 4px;
+}
+.location-panel::-webkit-scrollbar-track { background: transparent; }
+
+/* responsive: stack vertically on narrow screens */
+@media (max-width: 520px) {
+  .location-row { flex-direction: column; gap: 8px; }
+}
+
+.settings-box {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding:30px ;
+  border-radius: 12px;
+  width: 40%;
+  max-height: 50vh;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  color: #333;
+  font-weight: 500;
+  text-align: left;
+  overflow-y: auto;
+}
+.date-row {
+  display: flex;
+  gap: 24px;              /* space between boxes */
+  flex-wrap: wrap;        /* wrap on smaller screens */
+  margin-top: 16px;
+}
+
+/* each date box */
+.date-box {
+  min-width: 40px;       /* prevent shrinking too small */
+  display: flex;
+  gap:10px;
+}
+
+/* title inside each date box */
+.date-box-title-start {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.date-box-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-right: 80px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.date-picker {
+  margin-top: 200px;
+  padding: 100px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+@media (max-height: 600px) {
+  .booking-box {
+    overflow-y: auto;
+  }
+}

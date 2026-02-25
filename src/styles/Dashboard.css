@@ -1,0 +1,22 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 40px;
+}
+
+.tile {
+  background-color: #e0f7fa;
+  border-radius: 12px;
+  padding: 60px 40px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  font-size: 20px;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+  background-color: #b2ebf2;
+}
