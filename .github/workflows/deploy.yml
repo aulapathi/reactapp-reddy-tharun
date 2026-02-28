@@ -1,4 +1,4 @@
-name: Deploy Without Registry
+name: Deploy Without Registry (Proper CI/CD)
 
 on:
   push:
@@ -6,26 +6,36 @@ on:
       - main
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy to EC2
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t react-app .
+
+      - name: Save Docker image
+        run: docker save react-app > react-app.tar
+
+      - name: Copy image to EC2
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "react-app.tar"
+          target: "/home/ec2-user/"
+
+      - name: Load and Run on EC2
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            if [ ! -d "react-app" ]; then
-              git clone https://github.com/aulapathi/reactapp-reddy-tharun.git
-            fi
-
-            cd react-app
-            git pull origin main
-
             docker stop react-app || true
             docker rm react-app || true
-
-            docker build -t react-app .
+            docker load < react-app.tar
             docker run -d -p 80:80 --name react-app react-app
