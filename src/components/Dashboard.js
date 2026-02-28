@@ -7,7 +7,7 @@ const tiles = [
   { title: 'View Requests', path: '/view-requests' },
   { title: 'View Floor', path: '/view-floor' },
   { title: 'Reports', path: '/reports' },                           
-  { title: 'TAH', path: '/tah' },
+  { title: 'sai', path: '/tah' },
   { title: 'Settings', path: '/settings' },
 ];
 
